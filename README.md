@@ -25,6 +25,7 @@ An IoT-based real-time bus tracking prototype designed to modernize campus inter
 ---
 
 ## 📁 Repository Structure
+```text
 Tracker-Bipol-Bus-Tracking-System/
 ├── Bus_Node_Code/         # Code for the mobile bus transmitter (ESP8266 + GPS)
 ├── Stop_Node_Code/        # Code for the bus stop receiver (ESP8266 + I2C LCD)
