@@ -33,7 +33,7 @@ Tracker-Bipol-Bus-Tracking-System/
 
 ---
 
-⚙️ How It Works
+## ⚙️ How It Works
 Bus Transmitter Node:
 
 The GPS module reads coordinates from satellite signals.
