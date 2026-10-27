@@ -1,73 +1,47 @@
-Tracker BIPOL (Bus Tracking IoT System)
+# Tracker-Bipol: IoT-Based Campus Bus Tracking System
 
-An Internet of Things (IoT) based real-time campus bus tracking system developed as a final project for the Computer Student Club (KSM CSC), Politeknik Negeri Jakarta.
+An IoT-based real-time bus tracking prototype designed to modernize campus internal transportation. This system utilizes **NodeMCU ESP8266** microcontrollers, **GPS Neo-6M** modules, **MQTT protocol**, and an **I2C 16x2 LCD** to track bus locations and display real-time arrival info at campus bus stops.
 
-🚌 Overview
+---
 
-Tracker BIPOL is a low-cost, smart campus transportation solution designed to resolve operational uncertainties regarding campus bus locations and schedules. The system utilizes a dual-node architecture connected wirelessly via the MQTT protocol, transmitting real-time GPS coordinate data from a moving vehicle unit to a digital bus stop display unit.
+## 🚀 Features
+- **Real-Time GPS Tracking:** Captures live latitude and longitude coordinates using the GPS Neo-6M module.
+- **MQTT Protocol Integration:** Lightweight and efficient messaging using a public MQTT broker (`broker.hivemq.com`) to transmit location data from the bus node to the stop display node.
+- **Smart Stop Detection:** Automatically calculates distance and detects nearby stops using latitude/longitude thresholds.
+- **LCD I2C Display:** Shows real-time bus status and current stop information directly on a digital screen at the bus stop.
 
-🛠️ System Architecture & Components
+---
 
-The system is divided into two main subsystems:
+## 🛠️ Hardware & Components
+| Component | Quantity | Description |
+| :--- | :---: | :--- |
+| **NodeMCU ESP8266** | 2 | Microcontroller units (one for the bus transmitter, one for the stop receiver) |
+| **GPS Neo-6M Module** | 1 | Satellite positioning module with antenna |
+| **I2C 16x2 LCD** | 1 | Display screen for bus stop notifications |
+| **18650 Battery + Casing** | 2 | Power supply for the mobile bus unit |
+| **Step-Up Converter** | 2 | Voltage booster |
+| **Jumper Wires & USB Cables** | - | Circuit connections and power delivery |
 
-Bus/Vehicle Unit (Transmitter): Powered by an ESP8266 microcontroller paired with a NEO-6M GPS module to gather coordinates and publish them to an MQTT broker.
+---
 
-Bus Stop Unit (Receiver): Powered by an ESP8266 microcontroller subscribed to the MQTT broker, which processes the coordinates, detects the closest campus bus stop, and renders the information onto an I2C 16x2 LCD screen.
+## 📁 Repository Structure
+```text
+Tracker-Bipol-Bus-Tracking-System/
+├── Bus_Node_Code/         # Code for the mobile bus transmitter (ESP8266 + GPS)
+├── Stop_Node_Code/        # Code for the bus stop receiver (ESP8266 + I2C LCD)
+└── README.md              # Project documentation
 
-Hardware Requirements
+---
 
-NodeMCU ESP8266 (x2)
+⚙️ How It Works
+Bus Transmitter Node:
 
-NEO-6M GPS Module with Antenna (x1)
+The GPS module reads coordinates from satellite signals.
 
-I2C 16x2 LCD Display (x1)
+The ESP8266 processes the data and publishes it as a JSON payload via MQTT to a specified topic (exploreCscKel3/bus).
 
-18650 Batteries + Casing (x2)
+Bus Stop Receiver Node:
 
-Step-Up Converter (x2)
+The ESP8266 subscribes to the same MQTT topic.
 
-USB to Micro USB Cables (x2)
-
-Female-to-Female Jumper Wires (As needed)
-
-📂 Repository Structure
-
-├── bus_tracker_sender/
-│   └── bus_tracker_sender.ino       # Source code for the bus/vehicle transmitter unit
-├── bus_stop_receiver/
-│   └── bus_stop_receiver.ino        # Source code for the bus stop display receiver unit
-└── README.md
-
-
-⚙️ Installation & Setup
-
-Prerequisites
-
-Make sure you have the following installed:
-
-Arduino IDE
-
-Required Arduino Libraries:
-
-ESP8266WiFi
-
-PubSubClient (by Nick O'Leary for MQTT)
-
-SoftwareSerial
-
-TinyGPS++ (by Mikal Hart)
-
-LiquidCrystal_I2C
-
-ArduinoJson
-
-Configuration
-
-Open bus_tracker_sender.ino and update your Wi-Fi credentials and MQTT broker settings:
-
-const char* ssid = "YOUR_WIFI_SSID";
-const char* password = "YOUR_WIFI_PASSWORD";
-const char* mqtt_server = "broker.hivemq.com";
-
-
-Open bus_stop_receiver.ino and update the matching Wi-Fi and MQTT configurations, along with your defined campus stop coordinates if necessary.
+Upon receiving incoming location data, it parses the JSON, checks proximity to predefined campus stops, and displays the status on the I2C LCD screen.
