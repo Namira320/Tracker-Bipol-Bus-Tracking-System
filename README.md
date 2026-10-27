@@ -33,14 +33,10 @@ Tracker-Bipol-Bus-Tracking-System/
 ---
 
 ⚙️ How It Works
-Bus Transmitter Node:
+- Bus Transmitter Node:
+  1. The GPS module reads coordinates from satellite signals.
+  2. The ESP8266 processes the data and publishes it as a JSON payload via MQTT to a specified topic (exploreCscKel3/bus).
 
-The GPS module reads coordinates from satellite signals.
-
-The ESP8266 processes the data and publishes it as a JSON payload via MQTT to a specified topic (exploreCscKel3/bus).
-
-Bus Stop Receiver Node:
-
-The ESP8266 subscribes to the same MQTT topic.
-
-Upon receiving incoming location data, it parses the JSON, checks proximity to predefined campus stops, and displays the status on the I2C LCD screen.
+- Bus Stop Receiver Node:
+  1. The ESP8266 subscribes to the same MQTT topic.
+  2. Upon receiving incoming location data, it parses the JSON, checks proximity to predefined campus stops, and displays the status on the I2C LCD screen.
