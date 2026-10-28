@@ -4,6 +4,10 @@ An IoT-based real-time bus tracking prototype designed to modernize campus inter
 
 ---
 
+> 🏆 **Project Recognition:** Recognized as the **Top 2 Final Project** in the Computer Science Club (KSM CSC) program at Politeknik Negeri Jakarta. Check out the official announcement [here]([MASUKKAN_LINK_IG_DI_SINI](https://www.instagram.com/p/DO4z1mjk1tq/?img_index=3&dlrf=MWxjY21wM3o3OGczeQ==)).
+
+---
+
 ## 📺 Demo Video
 
 [![Demo Video Proyek Kedai Kopi](https://img.youtube.com/vi/tLjY1DbTVxI/0.jpg)](https://www.youtube.com/watch?v=tLjY1DbTVxI)
