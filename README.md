@@ -10,6 +10,12 @@ An IoT-based real-time bus tracking prototype designed to modernize campus inter
 
 ---
 
+## 📄 Project Documentation
+
+[Tracker-Bipol-Bus-Tracking-System](./Tracker-Bipol-Bus-Tracking-System.pdf)
+
+---
+
 ## 🚀 Features
 - **Real-Time GPS Tracking:** Captures live latitude and longitude coordinates using the GPS Neo-6M module.
 - **MQTT Protocol Integration:** Lightweight and efficient messaging using a public MQTT broker (`broker.hivemq.com`) to transmit location data from the bus node to the stop display node.
